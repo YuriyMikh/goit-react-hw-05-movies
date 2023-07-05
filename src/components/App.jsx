@@ -1,6 +1,9 @@
 // import { getMovies } from "services/api/api";
 import Homepage from 'pages/Homepage/Homepage';
-import { Link, Route, Routes } from 'react-router-dom';
+import {
+  // Link,
+  Route, Routes
+} from 'react-router-dom';
 
 export const App = () => {
   return (
