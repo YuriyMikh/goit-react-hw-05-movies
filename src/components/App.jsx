@@ -2,8 +2,8 @@
 import { NavLink, Route, Routes } from 'react-router-dom';
 import Homepage from 'pages/Homepage/Homepage';
 import { Movies } from 'pages/Movies/Movies';
-import { MovieDetails } from 'pages/MovieDetails/MovieDetails';
-import { NotFound } from 'pages/NotFound/NotFound';
+// import { MovieDetails } from 'pages/MovieDetails/MovieDetails';
+// import { NotFound } from 'pages/NotFound/NotFound';
 
 export const App = () => {
   return (
