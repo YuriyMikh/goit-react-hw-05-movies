@@ -18,19 +18,19 @@ const Homepage = () => {
 
     useEffect(() => {
       console.log(589);
-      fetchTrendingMovies().then(res => {
-        console.log(res);
-        setMovies(res);
+      fetchTrendingMovies().then(response => {
+        console.log(response);
+        setMovies(response);
       });
     }, []);
 
   return (
     <div>
-      <nav>
+      {/* <nav>
         <Link to="/">Home</Link>
         <br />
         <Link to="/movies">Movies</Link>
-      </nav>
+      </nav> */}
           {/* <ul> {movies.map()}</ul> */}
           <List movies={movies}></List>
     </div>
