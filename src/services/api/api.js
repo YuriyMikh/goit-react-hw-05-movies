@@ -15,7 +15,7 @@ export const fetchMoviesByID = async (id) => {
     `https://api.themoviedb.org/3/movie/${id}?api_key=3969575b7b3cc6462971102333f767aa`
   );
 
-  return data.results;
+  return data;
 };
 
 //поиск кинофильма по ключевому слову на странице фильмов.

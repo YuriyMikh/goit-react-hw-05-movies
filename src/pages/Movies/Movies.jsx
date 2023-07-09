@@ -35,7 +35,7 @@ export const Movies = () => {
     <>
       <div>
         <br></br>
-        Это страничка Movies
+        Это страничка Movies.jsx
       </div>
       <input
         type="text"
@@ -49,7 +49,7 @@ export const Movies = () => {
       <ul>
         {searchMoviesByKeyword.map(movie => (
           <li key={movie.id}>
-            <Link> {movie.title} </Link>
+                <Link to={`${movie.id}` }> {movie.title} </Link>
           </li>
         ))}
       </ul>

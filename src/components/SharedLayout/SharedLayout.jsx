@@ -1,7 +1,16 @@
-// import { Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 
 const SharedLayout = () => {
-  return <div>SharedLayout</div>;
+  return (
+    <>
+      <nav>
+        <NavLink to="/"> Home </NavLink>
+        <br />
+        <NavLink to="/movies"> Movies </NavLink>
+      </nav>
+      <Outlet />
+    </>
+  );
 };
 
 export default SharedLayout;
