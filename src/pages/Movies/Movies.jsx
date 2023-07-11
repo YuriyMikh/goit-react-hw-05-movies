@@ -43,7 +43,7 @@ export const Movies = () => {
         onChange={handleQuery}
         placeholder="enter a request"
       />
-      <button type="submit" onClick={handleSubmit}>
+      <button type="button" onClick={handleSubmit}>
         Search
       </button>
       <ul>

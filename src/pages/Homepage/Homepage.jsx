@@ -4,15 +4,8 @@ import { fetchTrendingMovies } from 'services/api/api';
 import { List } from 'components/List';
 
 const Homepage = () => {
-  const [movies, setMovies] = useState(
-    // () =>
-    //   fetchTrendingMovies().then(res => {
-    //       console.log('first');
-    //     console.log(res);
-    //     setMovies(prev => [prev, ...res]);
-    //   }) ??
-    []
-  );
+
+  const [movies, setMovies] = useState([]);
 
   // console.log(setMovies);
 
