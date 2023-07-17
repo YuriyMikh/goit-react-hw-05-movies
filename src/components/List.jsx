@@ -6,7 +6,7 @@ export const List = ({ movies }) => {
   return (
     <div>
       <br></br>
-      List.jsx---Trending today
+
       <ul>
         {movies.map(item => (
           <li key={item.id}>

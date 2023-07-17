@@ -1,9 +1,11 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import Homepage from 'pages/Homepage/Homepage';
-import { Movies } from 'pages/Movies/Movies';
 import SharedLayout from './SharedLayout/SharedLayout';
-import { MovieDetails } from 'pages/MovieDetails/MovieDetails';
-// import { NotFound } from 'pages/NotFound/NotFound';
+import Movies from 'pages/Movies/Movies';
+import MovieDetails from 'pages/MovieDetails/MovieDetails';
+import Cast from './Cast/Cast';
+import Reviews from './Reviews/Reviews';
+
 
 export const App = () => {
   return (
@@ -12,9 +14,12 @@ export const App = () => {
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Homepage />} />
           <Route path="movies" element={<Movies />} />
-          <Route path="movies/:movieID" element={<MovieDetails />} />
+          <Route path="movies/:movieID" element={<MovieDetails />}>
+            <Route path="cast" element={<Cast />} />
+            <Route path="reviews" element={<Reviews />} />
+          </Route>
         </Route>
-        {/* <Route path="*" element={<NotFound />} /> */}
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </>
   );

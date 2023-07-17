@@ -1,10 +1,17 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 import { fetchMoviesByKeyword } from 'services/api/api';
 
-export const Movies = () => {
+const Movies = () => {
   const [value, setValue] = useState('');
   const [searchMoviesByKeyword, setSearchMoviesByKeyword] = useState([]);
+  const [param, setParam] = useSearchParams();
+
+  useEffect(() => {
+    const query = param.get('query');
+    if (!query) return;
+    fetchMoviesByKeyword(query).then(data => setSearchMoviesByKeyword(data));
+  }, [param]);
 
   const handleQuery = event => {
     setValue(event.target.value);
@@ -12,47 +19,33 @@ export const Movies = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    //   console.log(value);
-    if (!value) {
-      alert('введите запрос');
-      return;
-    }
-
-    fetchMoviesByKeyword(value).then(response => {
-      //   console.log(response);
-        if (response.length === 0) {
-          alert('ничего не найдено');
-        }
-
-      setSearchMoviesByKeyword(response);
-      // console.log(searchMoviesByKeyword);
-    });
-      
-    setValue('');
+    setParam({ query: value });
   };
 
   return (
     <>
       <div>
         <br></br>
-        Это страничка Movies.jsx
       </div>
-      <input
-        type="text"
-        value={value}
-        onChange={handleQuery}
-        placeholder="enter a request"
-      />
-      <button type="button" onClick={handleSubmit}>
-        Search
-      </button>
+      <form onClick={handleSubmit}>
+        <input
+          type="text"
+          value={value}
+          onChange={handleQuery}
+          placeholder="enter a request"
+        />
+        <button type="submit">Search</button>
+      </form>
+
       <ul>
         {searchMoviesByKeyword.map(movie => (
           <li key={movie.id}>
-                <Link to={`${movie.id}` }> {movie.title} </Link>
+            <Link to={`${movie.id}`}> {movie.title} </Link>
           </li>
         ))}
       </ul>
     </>
   );
 };
+
+export default Movies;

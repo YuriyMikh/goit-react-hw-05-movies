@@ -11,14 +11,14 @@ const Homepage = () => {
 
   useEffect(() => {
     fetchTrendingMovies().then(response => {
-      console.log(response);
+      // console.log(response);
       setMovies(response);
     });
   }, []);
 
   return (
     <>
-      <div>Это homepage.jsx</div>
+      <h1>Trending today</h1>
 
       <div>
         <List movies={movies}></List>
