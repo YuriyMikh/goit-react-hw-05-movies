@@ -1,10 +1,11 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
-import Homepage from 'pages/Homepage/Homepage';
+import { lazy } from 'react';
 import SharedLayout from './SharedLayout/SharedLayout';
-import Movies from 'pages/Movies/Movies';
-import MovieDetails from 'pages/MovieDetails/MovieDetails';
-import Cast from './Cast/Cast';
-import Reviews from './Reviews/Reviews';
+const Homepage = lazy(() => import('pages/Homepage/Homepage'));
+const Movies = lazy(() => import('pages/Movies/Movies'));
+const MovieDetails = lazy(() => import('pages/MovieDetails/MovieDetails'));
+const Cast = lazy(() => import('./Cast/Cast'));
+const Reviews = lazy(() => import('./Reviews/Reviews'));
 
 
 export const App = () => {
@@ -18,8 +19,8 @@ export const App = () => {
             <Route path="cast" element={<Cast />} />
             <Route path="reviews" element={<Reviews />} />
           </Route>
+          <Route path="*" element={<Navigate to="/" />} />
         </Route>
-        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </>
   );
