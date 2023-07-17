@@ -20,11 +20,7 @@ const Movies = () => {
 
   return (
     <>
-      <div>
-        <br></br>
-      </div>
       <FormSearchMovies onSubmit={handleSubmit} />
-
       <List movies={searchMoviesByKeyword} />
     </>
   );
