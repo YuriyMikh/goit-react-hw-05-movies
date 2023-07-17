@@ -11,6 +11,10 @@ const Cast = () => {
     fetchMovieCast(movieID).then(data => setCast(data.cast));
   }, [movieID]);
     
+    if (cast.length < 1) {
+      return "We don't have any casting information for this movie.";
+    }
+    
   return (
     <CastList>
       {cast.map(({ id, character, name, profile_path }) => (

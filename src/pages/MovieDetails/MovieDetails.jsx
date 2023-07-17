@@ -1,28 +1,39 @@
 import { useEffect, useState } from 'react';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { fetchMoviesByID } from 'services/api/api';
-import { AdditionalInfo, ButtonBack, FilmBanner, FilmInfoWrapper, GenresItem, GenresList } from './MovieDetails.styled';
+import {
+  AdditionalInfo,
+  ButtonBack,
+  FilmBanner,
+  FilmInfoWrapper,
+  GenresItem,
+  GenresList,
+} from './MovieDetails.styled';
 
 const MovieDetails = () => {
   const { movieID } = useParams();
-  const [movieDetails, setMovieDetails] = useState([]);
+  const [movieDetails, setMovieDetails] = useState(null);
   const location = useLocation();
 
-    useEffect(() => {
-      fetchMoviesByID(movieID).then(response => {
-        console.log(response);
-        
-        const { title, poster_path, vote_average, overview, genres } = response;
-        
-        setMovieDetails({
-          photo: `https://image.tmdb.org/t/p/original/${poster_path}`,
-          title,
-          votes: vote_average * 10,
-          overview,
-          genres,
-        });
+  useEffect(() => {
+    fetchMoviesByID(movieID).then(response => {
+      console.log(response);
+
+      const { title, poster_path, vote_average, overview, genres } = response;
+
+      setMovieDetails({
+        photo: `https://image.tmdb.org/t/p/original/${poster_path}`,
+        title,
+        votes: vote_average * 10,
+        overview,
+        genres,
       });
-    }, [movieID]);
+    });
+  }, [movieID]);
+
+  if (!movieDetails) {
+    return;
+  }
 
   const { photo, title, votes, overview, genres } = movieDetails;
 
