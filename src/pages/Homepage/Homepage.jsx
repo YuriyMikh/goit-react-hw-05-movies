@@ -21,7 +21,7 @@ const Homepage = () => {
       <h1>Trending today</h1>
 
       <div>
-        <List movies={movies}></List>
+        <List movies={movies}/>
       </div>
     </>
   );
